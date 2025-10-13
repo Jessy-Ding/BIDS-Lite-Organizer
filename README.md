@@ -13,7 +13,7 @@ A simple, offline CLI that enforces a small, opinionated subset of BIDS for T1w(
 ## Reduced Scope for Iteration-1
 Planned functionalities (6):
 
-	1.	load_minimal_spec() – Load a hard-coded minimal T1w spec (no external schema files).
+	1.	load_minimal_spec() – Load a hard-coded minimal T1w spec.
 	
 	2.	read_metadata(path) – Read TSV/CSV with required columns (participant_id, session_id, age, sex).
 	
