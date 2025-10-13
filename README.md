@@ -13,10 +13,15 @@ A simple, offline CLI that enforces a small, opinionated subset of BIDS for T1w(
 ## Reduced Scope for Iteration-1
 Planned functionalities (6):
 	1.	load_minimal_spec() – Load a hard-coded minimal T1w spec (no external schema files).
+	
 	2.	read_metadata(path) – Read TSV/CSV with required columns (participant_id, session_id, age, sex).
+	
 	3.	validate_inputs(in_dir, meta) – Check required columns, illegal characters, and file existence. Iter-1
+	
 	4.	normalize_ids(meta) – Normalize subject/session IDs (lowercase, zero-pad, strip spaces). Iter-1
+	
 	5.	plan_transforms(in_dir, meta) – Produce a dry-run plan: source → target BIDS paths (JSON/print). Iter-1
+	
 	6.	apply_transforms(plan, out_dir) – Execute safe copies/moves; write dataset_description.json, participants.tsv, and report.md.  Iter-2
 
 # Program
