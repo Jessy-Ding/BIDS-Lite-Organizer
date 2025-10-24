@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)]()
+
 # BIDS(Brain Imaging Data Structure)-Lite-Organizer-CLI
 A CLI to automatically organize brain imaging data into BIDS format (Idea proposed by Dr. Michael Fox, MD, PhD, Brigham and Women's Hospital). Also, part of this project serves as a semester-long project for the course CS5001 at Khoury College of Computer Sciences, Northeastern University, Oakland, CA.
 

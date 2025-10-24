@@ -1,7 +1,0 @@
-[
-  {
-    "src": "use_case_example/T1w/sub-001_ses-01_T1w.nii.gz",
-    "dst": "bids_out/sub-1/ses-1/anat/sub-1_ses-1_T1w.nii.gz",
-    "action": "copy"
-  }
-]
