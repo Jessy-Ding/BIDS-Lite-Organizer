@@ -52,5 +52,5 @@ python -m bids_lite.cli plan --in ./use_case_example/T1w --meta ./use_case_examp
 ## Code Repository on GitHub
 [BIDS-Lite-Organizer-CLI](https://github.com/Jessy-Ding/BIDS-Lite-Organizer-CLI)
 
-## Demo Recording
-
+## Demo
+[Testing Demo Recording](https://drive.google.com/file/d/1NnYvh1ZXDB--2viZrBG3LO9kez0YnLGV/view?usp=drive_link)
