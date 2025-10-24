@@ -1,0 +1,5 @@
+click>=8.1
+pandas>=2.2
+pydantic>=2.7
+nibabel>=5.2
+pytest>=8.2
