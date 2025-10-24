@@ -27,23 +27,26 @@ Planned functionalities (7):
 	7.  expand to more MRI modalities and wrap up into off-line desktop softwares. Iter-2
 
 
-## Iter-1 Challenges and Solutions 
-•	Challenge 1: Metadata files from different labs/researchers have inconsistent column names or missing fields.
-	- Implemented a strict validation function that detects missing columns and illegal characters early.
-•	Challenge 2: Subject/session IDs often contain spaces or special characters.
-	- Added a normalization layer with regex filtering and zero-padding.
-•	Challenge 3: Testing relative imports during development caused ModuleNotFoundError.
-	- Fixed by adding the project root to sys.path and setting up consistent test import paths.
+## Iter-1 Challenges and Solutions
 
+- **Challenge 1:** Metadata files from different labs/researchers have inconsistent column names or missing fields.  
+  **Solution:** Implemented a strict validation function that detects missing columns and illegal characters early.
+- **Challenge 2:** Subject/session IDs often contain spaces or special characters.  
+  **Solution:** Added a normalization layer with regex filtering and zero-padding.
+- **Challenge 3:** Testing relative imports during development caused `ModuleNotFoundError`.  
+  **Solution:** Added the project root to `sys.path` in tests and set up consistent import paths.
 
 ## Steps to run the program
-Step1: env set up
-	install the py environment requested by `requirements.txt`
-Step2: CLI usage examples
-locate(`cd`) to your installed parent project root, then run the following command in your terminal:
+
+1. **Environment setup**  
+   Install the Python environment requested by `requirements.txt`.
+
+2. **CLI usage examples**  
+   In your project root, run:
+
 ```bash
-	python -m bids_lite.cli validate --in ./use_case_example/T1w --meta ./use_case_example/metadata/metadata.csv
-	python -m bids_lite.cli plan --in ./use_case_example/T1w --meta ./use_case_example/metadata/metadata.csv --out ./bids_out --json ./plan.json
+python -m bids_lite.cli validate --in ./use_case_example/T1w --meta ./use_case_example/metadata/metadata.csv
+python -m bids_lite.cli plan --in ./use_case_example/T1w --meta ./use_case_example/metadata/metadata.csv --out ./bids_out --json ./plan.json
 ```
 
 ## Code Repository on GitHub
