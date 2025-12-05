@@ -27,9 +27,8 @@ def show_help():
     print("  - Linux: May need: sudo apt-get install python3-tk")
     print("  - macOS: Usually works out of the box")
     print("\nAlternative launch methods:")
-    print("  - Windows: Double-click run_gui.bat")
-    print("  - Linux/macOS: ./run_gui.sh")
     print("  - Direct: python ui/app.py")
+    print("  - As module: python -m ui.app")
 
 def test_imports():
     """Test if all required modules can be imported."""

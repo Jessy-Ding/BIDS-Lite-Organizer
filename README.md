@@ -425,16 +425,9 @@ python -m bids_lite.cli apply --in ./input_data --meta ./metadata.csv --out ./bi
 
 ### Launching the GUI
 
-**Windows:**
-```cmd
-run_gui.bat
-# or
-python run_gui.py
-```
-
-**Linux/macOS:**
+**All platforms:**
 ```bash
-./run_gui.sh
+python run_gui.py
 # or
 python3 run_gui.py
 ```
