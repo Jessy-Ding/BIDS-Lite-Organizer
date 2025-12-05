@@ -35,42 +35,7 @@ jobs:
         pip install -r requirements.txt
     
     - name: Test GUI import and basic initialization
-      run: |
-        python -c "
-        import sys
-        from pathlib import Path
-        
-        # Add project root to path
-        project_root = Path.cwd()
-        sys.path.insert(0, str(project_root))
-        
-        # Test imports
-        try:
-            import tkinter as tk
-            print('✅ tkinter imported successfully')
-            
-            # Test if GUI module can be imported
-            from ui import app
-            print('✅ GUI module imported successfully')
-            
-            # Test if we can create a Tk root (without showing window)
-            root = tk.Tk()
-            root.withdraw()  # Hide window
-            print('✅ Tk root created successfully')
-            
-            # Test if BIDSLiteApp can be instantiated
-            app_instance = app.BIDSLiteApp(root)
-            print('✅ BIDSLiteApp instantiated successfully')
-            
-            root.destroy()
-            print('✅ All GUI tests passed on Windows!')
-            
-        except Exception as e:
-            print(f'❌ Error: {e}')
-            import traceback
-            traceback.print_exc()
-            sys.exit(1)
-        "
+      run: python scripts/test_gui_import.py
     
     - name: Test CLI (verify core functionality)
       run: |
@@ -100,42 +65,7 @@ jobs:
         pip install -r requirements.txt
     
     - name: Test GUI import and basic initialization
-      run: |
-        python -c "
-        import sys
-        from pathlib import Path
-        
-        # Add project root to path
-        project_root = Path.cwd()
-        sys.path.insert(0, str(project_root))
-        
-        # Test imports
-        try:
-            import tkinter as tk
-            print('✅ tkinter imported successfully')
-            
-            # Test if GUI module can be imported
-            from ui import app
-            print('✅ GUI module imported successfully')
-            
-            # Test if we can create a Tk root (without showing window)
-            root = tk.Tk()
-            root.withdraw()  # Hide window
-            print('✅ Tk root created successfully')
-            
-            # Test if BIDSLiteApp can be instantiated
-            app_instance = app.BIDSLiteApp(root)
-            print('✅ BIDSLiteApp instantiated successfully')
-            
-            root.destroy()
-            print('✅ All GUI tests passed on Linux!')
-            
-        except Exception as e:
-            print(f'❌ Error: {e}')
-            import traceback
-            traceback.print_exc()
-            sys.exit(1)
-        "
+      run: python scripts/test_gui_import.py
     
     - name: Test CLI (verify core functionality)
       run: |
@@ -160,42 +90,7 @@ jobs:
         pip install -r requirements.txt
     
     - name: Test GUI import and basic initialization
-      run: |
-        python -c "
-        import sys
-        from pathlib import Path
-        
-        # Add project root to path
-        project_root = Path.cwd()
-        sys.path.insert(0, str(project_root))
-        
-        # Test imports
-        try:
-            import tkinter as tk
-            print('✅ tkinter imported successfully')
-            
-            # Test if GUI module can be imported
-            from ui import app
-            print('✅ GUI module imported successfully')
-            
-            # Test if we can create a Tk root (without showing window)
-            root = tk.Tk()
-            root.withdraw()  # Hide window
-            print('✅ Tk root created successfully')
-            
-            # Test if BIDSLiteApp can be instantiated
-            app_instance = app.BIDSLiteApp(root)
-            print('✅ BIDSLiteApp instantiated successfully')
-            
-            root.destroy()
-            print('✅ All GUI tests passed on macOS!')
-            
-        except Exception as e:
-            print(f'❌ Error: {e}')
-            import traceback
-            traceback.print_exc()
-            sys.exit(1)
-        "
+      run: python scripts/test_gui_import.py
     
     - name: Test CLI (verify core functionality)
       run: |
