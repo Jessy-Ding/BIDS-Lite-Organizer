@@ -1,0 +1,203 @@
+name: Test GUI Cross-Platform Compatibility
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'ui_mac/**'
+      - 'bids_lite/**'
+      - 'requirements.txt'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'ui_mac/**'
+      - 'bids_lite/**'
+      - 'requirements.txt'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  test-gui-windows:
+    name: Test GUI on Windows
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Test GUI import and basic initialization
+      run: |
+        python -c "
+        import sys
+        from pathlib import Path
+        
+        # Add project root to path
+        project_root = Path.cwd()
+        sys.path.insert(0, str(project_root))
+        
+        # Test imports
+        try:
+            import tkinter as tk
+            print('✅ tkinter imported successfully')
+            
+            # Test if GUI module can be imported
+            from ui import app
+            print('✅ GUI module imported successfully')
+            
+            # Test if we can create a Tk root (without showing window)
+            root = tk.Tk()
+            root.withdraw()  # Hide window
+            print('✅ Tk root created successfully')
+            
+            # Test if BIDSLiteApp can be instantiated
+            app_instance = app.BIDSLiteApp(root)
+            print('✅ BIDSLiteApp instantiated successfully')
+            
+            root.destroy()
+            print('✅ All GUI tests passed on Windows!')
+            
+        except Exception as e:
+            print(f'❌ Error: {e}')
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+        "
+    
+    - name: Test CLI (verify core functionality)
+      run: |
+        python -m bids_lite.cli --help
+
+  test-gui-linux:
+    name: Test GUI on Linux
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install system dependencies for tkinter
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-tk
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Test GUI import and basic initialization
+      run: |
+        python -c "
+        import sys
+        from pathlib import Path
+        
+        # Add project root to path
+        project_root = Path.cwd()
+        sys.path.insert(0, str(project_root))
+        
+        # Test imports
+        try:
+            import tkinter as tk
+            print('✅ tkinter imported successfully')
+            
+            # Test if GUI module can be imported
+            from ui import app
+            print('✅ GUI module imported successfully')
+            
+            # Test if we can create a Tk root (without showing window)
+            root = tk.Tk()
+            root.withdraw()  # Hide window
+            print('✅ Tk root created successfully')
+            
+            # Test if BIDSLiteApp can be instantiated
+            app_instance = app.BIDSLiteApp(root)
+            print('✅ BIDSLiteApp instantiated successfully')
+            
+            root.destroy()
+            print('✅ All GUI tests passed on Linux!')
+            
+        except Exception as e:
+            print(f'❌ Error: {e}')
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+        "
+    
+    - name: Test CLI (verify core functionality)
+      run: |
+        python -m bids_lite.cli --help
+
+  test-gui-macos:
+    name: Test GUI on macOS
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Test GUI import and basic initialization
+      run: |
+        python -c "
+        import sys
+        from pathlib import Path
+        
+        # Add project root to path
+        project_root = Path.cwd()
+        sys.path.insert(0, str(project_root))
+        
+        # Test imports
+        try:
+            import tkinter as tk
+            print('✅ tkinter imported successfully')
+            
+            # Test if GUI module can be imported
+            from ui import app
+            print('✅ GUI module imported successfully')
+            
+            # Test if we can create a Tk root (without showing window)
+            root = tk.Tk()
+            root.withdraw()  # Hide window
+            print('✅ Tk root created successfully')
+            
+            # Test if BIDSLiteApp can be instantiated
+            app_instance = app.BIDSLiteApp(root)
+            print('✅ BIDSLiteApp instantiated successfully')
+            
+            root.destroy()
+            print('✅ All GUI tests passed on macOS!')
+            
+        except Exception as e:
+            print(f'❌ Error: {e}')
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+        "
+    
+    - name: Test CLI (verify core functionality)
+      run: |
+        python -m bids_lite.cli --help
+

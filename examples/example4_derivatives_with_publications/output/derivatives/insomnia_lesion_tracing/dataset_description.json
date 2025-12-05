@@ -1,0 +1,16 @@
+{
+  "Name": "BIDS Lite Derivatives - insomnia_lesion_tracing",
+  "BIDSVersion": "1.9.0",
+  "DatasetType": "derivatives",
+  "PipelineDescription": {
+    "Name": "insomnia_lesion_tracing",
+    "Version": "0.1.0"
+  },
+  "GeneratedBy": [
+    {
+      "Name": "BIDS Lite",
+      "Version": "0.1.0"
+    }
+  ],
+  "Date": "2025-12-04"
+}

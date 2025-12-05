@@ -3,3 +3,5 @@ pandas>=2.2
 pydantic>=2.7
 nibabel>=5.2
 pytest>=8.2
+openpyxl>=3.0  # For reading Excel .xlsx files
+tkinterdnd2>=0.3.0  # For drag and drop support in GUI

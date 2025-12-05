@@ -1,7 +1,12 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
 
 # Virtual environments
 .venv/
@@ -9,24 +14,27 @@ env/
 venv/
 ENV/
 
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
 # macOS
 .DS_Store
 
-# Pytest / coverage
+# Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
-# Build artifacts
-build/
-dist/
-*.egg-info/
-
-# IDE / Editor
-.vscode/
-.idea/
-
-# Project-specific
+# Project-specific (keep examples/output for GitHub)
+# But ignore user-generated outputs
 bids_out/
-reports/
+test_phenotype_output/
 plan.json
+reports/
+
+# Keep examples/output directories (they're part of the documentation)
+!examples/*/output/
+!examples/*/output/**/*
