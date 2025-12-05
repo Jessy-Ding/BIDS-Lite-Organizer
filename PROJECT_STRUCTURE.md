@@ -52,6 +52,7 @@ Project_BIDS-Lite/
 ├── README.md                     # Main documentation (START HERE!)
 ├── PROJECT_STRUCTURE.md          # This file
 ├── requirements.txt              # Python dependencies
+├── run_gui.py                    # GUI launcher (cross-platform)
 └── LICENSE                       # MIT License
 ```
 
@@ -72,6 +73,13 @@ The core package containing all the BIDS organization logic.
 Cross-platform graphical user interface built with tkinter. Works on Windows, macOS, and Linux.
 
 - **`app.py`**: Tkinter-based GUI application
+
+### Root Directory Files
+
+- **`run_gui.py`**: Cross-platform GUI launcher script. Run with `python run_gui.py` or `python3 run_gui.py`
+- **`README.md`**: Main documentation and user guide
+- **`requirements.txt`**: Python package dependencies
+- **`LICENSE`**: MIT License
 
 ### `examples/`
 **This is where you should start!** Complete, runnable examples with:
