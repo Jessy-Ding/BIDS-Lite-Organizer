@@ -77,3 +77,4 @@ if __name__ == "__main__":
         print("[FAILURE] Some tests failed")
         sys.exit(1)
 
+# Trigger workflow test
