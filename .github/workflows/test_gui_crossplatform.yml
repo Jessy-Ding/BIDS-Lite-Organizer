@@ -57,7 +57,7 @@ jobs:
     - name: Install system dependencies for tkinter
       run: |
         sudo apt-get update
-        sudo apt-get install -y python3-tk
+        sudo apt-get install -y python3-tk xvfb
     
     - name: Install Python dependencies
       run: |
@@ -65,7 +65,11 @@ jobs:
         pip install -r requirements.txt
     
     - name: Test GUI import and basic initialization
-      run: python scripts/test_gui_import.py
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        sleep 2
+        python scripts/test_gui_import.py
     
     - name: Test CLI (verify core functionality)
       run: |
