@@ -632,6 +632,7 @@ bids_out/
 ├── derivatives/
 │   ├── [pipeline_name]/
 │   │   ├── dataset_description.json
+│   │   ├── participants.tsv
 │   │   ├── README.md
 │   │   ├── logs/
 │   │   │   └── report.md
