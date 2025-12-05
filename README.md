@@ -94,25 +94,9 @@ pip install -r requirements.txt
 
 ### Platform-Specific Setup
 
-#### Windows
-- Python usually includes tkinter by default
-- If you get an error about tkinter, install Python from [python.org](https://www.python.org/downloads/) (make sure to check "tcl/tk" during installation)
-
-#### Linux
-- Install tkinter system package:
-  ```bash
-  # Ubuntu/Debian
-  sudo apt-get install python3-tk
-  
-  # Fedora
-  sudo dnf install python3-tkinter
-  
-  # Arch Linux
-  sudo pacman -S tk
-  ```
-
-#### macOS
-- tkinter is included with Python by default
+**Windows**: tkinter usually included with Python  
+**Linux**: Install tkinter: `sudo apt-get install python3-tk` (Ubuntu/Debian)  
+**macOS**: tkinter included with Python
 
 ---
 
@@ -435,43 +419,30 @@ python -m bids_lite.cli apply --in ./input_data --meta ./metadata.csv --out ./bi
 ### Platform Support
 
 **Cross-Platform Compatibility:**
-- **All platforms (Windows, Linux, macOS)**: Both GUI and CLI are fully tested and supported
-- **GUI**: Works on all platforms (tested via GitHub Actions on Windows, Linux, macOS)
-- **CLI**: Works on all platforms (fully cross-platform)
-- If you encounter GUI issues, use the **CLI** instead (fully cross-platform and feature-complete)
+- **CLI**: Works on all platforms (Windows, Linux, macOS)
+- **GUI**: Works on all platforms (tested on Windows, Linux, macOS via GitHub Actions)
+- If GUI doesn't work, use CLI instead (same functionality)
 
 ### Launching the GUI
-
-**Easiest way (recommended):**
 
 **Windows:**
 ```cmd
 run_gui.bat
+# or
+python run_gui.py
 ```
-Or double-click `run_gui.bat` in Windows Explorer
 
 **Linux/macOS:**
 ```bash
 ./run_gui.sh
-```
-Or:
-```bash
+# or
 python3 run_gui.py
 ```
 
-**Alternative methods:**
+**Verify installation:**
 ```bash
-# Direct Python execution
-python ui/app.py
-
-# Or as a module
-python -m ui.app
+python scripts/test_all_platforms.py  # Tests both GUI and CLI
 ```
-
-**Troubleshooting:**
-- If you get "tkinter not found" on Linux, install the system package (see Installation section above)
-- If you get import errors, make sure you've installed dependencies: `pip install -r requirements.txt`
-- On Windows, if double-clicking doesn't work, open Command Prompt in the project folder and run `run_gui.bat`
 
 ### GUI Workflow
 
