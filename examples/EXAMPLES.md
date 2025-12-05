@@ -132,8 +132,8 @@ Use these examples as templates for your own data organization.
 |---------|-----------|-----------|-----------|-----------|
 | Dataset Type | Raw | Raw | Derivatives | Derivatives |
 | Metadata | Minimal | With optional columns | Author names | Author names |
-| Phenotype Files | No | -  | No | No |
-| Publication Files | No | No | No | -  |
+| Phenotype Files | No | Yes | No | No |
+| Publication Files | No | No | No | Yes |
 | Complexity |  Simple |  Medium |  Advanced |  Advanced |
 
 ---
