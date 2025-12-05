@@ -20,7 +20,7 @@ Project_BIDS-Lite/
 │   └── app.py                   # Tkinter GUI
 │
 ├── scripts/                      # Development and testing scripts
-│   └── test_gui_crossplatform.py  # GUI cross-platform compatibility test
+│   └── test_gui_import.py        # GUI import test (used by CI)
 │
 ├── examples/                     # Complete examples (START HERE!)
 │   ├── EXAMPLES.md              # Examples overview

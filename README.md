@@ -868,10 +868,9 @@ We use a combination of automated tests, example-driven end-to-end runs, and cro
   - This validates that real-world-like datasets remain stable across code changes.
 
 - **Cross-platform GUI and CLI checks**
-  - A dedicated script (`scripts/test_gui_crossplatform.py`) verifies that the GUI module and Tkinter can be imported and initialized.
   - GitHub Actions workflows run these checks on **Windows**, **Linux**, and **macOS**, ensuring that:
     - The CLI entry points import and run without errors
-    - The GUI root window can be created on all three platforms
+    - The GUI can be imported and initialized on all three platforms
   - Manual GUI testing has been performed on macOS; on Windows/Linux, the **CLI is the primary, fully tested interface**, while the GUI is expected to work and is further validated by CI.
 
 **Summary of current status**

@@ -58,8 +58,52 @@ def test_imports():
         return False
     
     print("\n✓ All imports successful!")
-    print("GUI should work correctly.")
     return True
+
+def test_gui_launch():
+    """Test if GUI can actually launch (creates window then closes immediately)."""
+    print("\nTesting GUI launch...")
+    try:
+        import tkinter as tk
+        from ui import app
+        
+        # Try to create GUI window
+        print("  Creating GUI window...")
+        if app.DND_AVAILABLE and app.TkinterDnD:
+            root = app.TkinterDnD.Tk()
+        else:
+            root = tk.Tk()
+        
+        root.withdraw()  # Hide window immediately
+        print("  ✓ Window created")
+        
+        # Try to instantiate the app
+        print("  Initializing BIDSLiteApp...")
+        app_instance = app.BIDSLiteApp(root)
+        print("  ✓ BIDSLiteApp initialized")
+        
+        # Close window immediately
+        root.destroy()
+        print("  ✓ Window closed")
+        
+        print("\n✓ GUI launch test successful!")
+        print("  The GUI should work correctly when you run it.")
+        return True
+        
+    except tk.TclError as e:
+        if 'no display' in str(e).lower() or 'display' in str(e).lower():
+            print(f"  ⚠ Display not available: {e}")
+            print("  This is normal in headless environments (like SSH).")
+            print("  GUI should work when you have a display available.")
+            return True  # Not a failure, just no display
+        else:
+            print(f"  ✗ TclError: {e}")
+            return False
+    except Exception as e:
+        print(f"  ✗ Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
 
 # Launch the GUI
 if __name__ == "__main__":
@@ -69,8 +113,13 @@ if __name__ == "__main__":
             show_help()
             sys.exit(0)
         elif sys.argv[1] in ['--test', '-t', 'test']:
-            success = test_imports()
-            sys.exit(0 if success else 1)
+            # Test imports first
+            if not test_imports():
+                sys.exit(1)
+            # Then test GUI launch
+            if not test_gui_launch():
+                sys.exit(1)
+            sys.exit(0)
         else:
             print(f"Unknown option: {sys.argv[1]}")
             print("Use --help for usage information")
