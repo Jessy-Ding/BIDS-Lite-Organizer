@@ -1,4 +1,4 @@
-name: Test GUI Cross-Platform Compatibility
+name: Test GUI and CLI Cross-Platform Compatibility
 
 on:
   push:
@@ -21,7 +21,7 @@ on:
 
 jobs:
   test-gui-windows:
-    name: Test GUI on Windows
+    name: Test GUI and CLI on Windows
     runs-on: windows-latest
     
     steps:
@@ -38,15 +38,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Test GUI import and basic initialization
-      run: python scripts/test_gui_import.py
-    
-    - name: Test CLI (verify core functionality)
-      run: |
-        python -m bids_lite.cli --help
+    - name: Test GUI and CLI
+      run: python scripts/test_all_platforms.py
 
   test-gui-linux:
-    name: Test GUI on Linux
+    name: Test GUI and CLI on Linux
     runs-on: ubuntu-latest
     
     steps:
@@ -68,19 +64,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Test GUI import and basic initialization
+    - name: Test GUI and CLI
       run: |
         export DISPLAY=:99
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
         sleep 2
-        python scripts/test_gui_import.py
-    
-    - name: Test CLI (verify core functionality)
-      run: |
-        python -m bids_lite.cli --help
+        python scripts/test_all_platforms.py
 
   test-gui-macos:
-    name: Test GUI on macOS
+    name: Test GUI and CLI on macOS
     runs-on: macos-latest
     
     steps:
@@ -97,10 +89,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Test GUI import and basic initialization
-      run: python scripts/test_gui_import.py
-    
-    - name: Test CLI (verify core functionality)
-      run: |
-        python -m bids_lite.cli --help
+    - name: Test GUI and CLI
+      run: python scripts/test_all_platforms.py
 

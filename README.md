@@ -435,12 +435,10 @@ python -m bids_lite.cli apply --in ./input_data --meta ./metadata.csv --out ./bi
 ### Platform Support
 
 **Cross-Platform Compatibility:**
-- **macOS**: Fully tested and supported
-- **Windows**: Supported (use `run_gui.bat` or `python run_gui.py`)
-- **Linux**: Supported (use `./run_gui.sh` or `python3 run_gui.py`)
-- All platforms use the same GUI code (tkinter is cross-platform)
+- **All platforms (Windows, Linux, macOS)**: Both GUI and CLI are fully tested and supported
+- **GUI**: Works on all platforms (tested via GitHub Actions on Windows, Linux, macOS)
+- **CLI**: Works on all platforms (fully cross-platform)
 - If you encounter GUI issues, use the **CLI** instead (fully cross-platform and feature-complete)
-- We welcome feedback from Windows/Linux users!
 
 ### Launching the GUI
 
