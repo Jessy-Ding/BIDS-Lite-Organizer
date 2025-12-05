@@ -7,12 +7,16 @@ on:
       - 'ui/**'
       - 'bids_lite/**'
       - 'requirements.txt'
+      - '.github/workflows/**'
+      - 'scripts/**'
   pull_request:
     branches: [ main, master ]
     paths:
       - 'ui/**'
       - 'bids_lite/**'
       - 'requirements.txt'
+      - '.github/workflows/**'
+      - 'scripts/**'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
