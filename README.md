@@ -85,12 +85,34 @@ This tool bridges the gap between messy real-world data and the BIDS standard, m
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd Project_BIDS-Lite
+git clone https://github.com/Jessy-Ding/BIDS-Lite-Organizer.git
+cd BIDS-Lite-Organizer
 
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+### Platform-Specific Setup
+
+#### Windows
+- Python usually includes tkinter by default
+- If you get an error about tkinter, install Python from [python.org](https://www.python.org/downloads/) (make sure to check "tcl/tk" during installation)
+
+#### Linux
+- Install tkinter system package:
+  ```bash
+  # Ubuntu/Debian
+  sudo apt-get install python3-tk
+  
+  # Fedora
+  sudo dnf install python3-tkinter
+  
+  # Arch Linux
+  sudo pacman -S tk
+  ```
+
+#### macOS
+- tkinter is included with Python by default
 
 ---
 
@@ -412,21 +434,46 @@ python -m bids_lite.cli apply --in ./input_data --meta ./metadata.csv --out ./bi
 
 ### Platform Support
 
-**Note on Platform Compatibility:**
-- GUI tested on **macOS**; should work on **Windows** and **Linux** (tkinter is cross-platform)
-- If you encounter GUI issues on Windows/Linux, use the **CLI** instead (fully cross-platform and feature-complete)
+**Cross-Platform Compatibility:**
+- **macOS**: Fully tested and supported
+- **Windows**: Supported (use `run_gui.bat` or `python run_gui.py`)
+- **Linux**: Supported (use `./run_gui.sh` or `python3 run_gui.py`)
+- All platforms use the same GUI code (tkinter is cross-platform)
+- If you encounter GUI issues, use the **CLI** instead (fully cross-platform and feature-complete)
 - We welcome feedback from Windows/Linux users!
 
 ### Launching the GUI
 
+**Easiest way (recommended):**
+
+**Windows:**
+```cmd
+run_gui.bat
+```
+Or double-click `run_gui.bat` in Windows Explorer
+
+**Linux/macOS:**
 ```bash
-python ui/app.py
+./run_gui.sh
+```
+Or:
+```bash
+python3 run_gui.py
 ```
 
-**Alternative (if the above doesn't work):**
+**Alternative methods:**
 ```bash
+# Direct Python execution
+python ui/app.py
+
+# Or as a module
 python -m ui.app
 ```
+
+**Troubleshooting:**
+- If you get "tkinter not found" on Linux, install the system package (see Installation section above)
+- If you get import errors, make sure you've installed dependencies: `pip install -r requirements.txt`
+- On Windows, if double-clicking doesn't work, open Command Prompt in the project folder and run `run_gui.bat`
 
 ### GUI Workflow
 
