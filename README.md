@@ -24,12 +24,8 @@ A lightweight Python tool to automatically organize messy brain imaging data int
 - [Examples](#examples)
 - [Common Questions & Troubleshooting](#common-questions--troubleshooting)
 - [Troubleshooting](#troubleshooting)
-- [Testing and Validation](#testing-and-validation)
-- [Challenges and Lessons Learned](#challenges-and-lessons-learned)
 - [Future Work](#future-work)
 - [Project Context](#project-context)
-- [Code Repository](#code-repository)
-- [Demo Videos](#demo-videos)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -802,78 +798,6 @@ python -m bids_lite.cli apply \
   python -m bids_lite.cli apply --help
   ```
 
----
-
-## Testing and Validation
-
-We use a combination of automated tests, example-driven end-to-end runs, and cross-platform checks to validate the behavior of BIDS Lite Organizer.
-
-- **Automated unit tests (CLI core)**
-  - Core components (`checklist`, `normalizer`, `planner`, `validator`, `writer`) are covered by `pytest` tests in `bids_lite/tests/`.
-  - Tests exercise both **raw** and **derivatives** workflows, including:
-    - ID normalization and matching from messy filenames and folders
-    - Session handling (default `ses-01` for raw vs. optional sessions for derivatives)
-    - Correct BIDS paths in generated plans and write operations
-  - Run locally with:
-    ```bash
-    pytest -q
-    ```
-
-- **End-to-end example runs**
-  - The four example datasets in `examples/` are used as **regression tests**:
-    - Example 1: basic raw data
-    - Example 2: raw data + phenotype files
-    - Example 3: derivatives dataset
-    - Example 4: derivatives + publication files
-  - For each example, we:
-    - Run the `apply` command as documented in this README
-    - Compare the produced BIDS structure (including logs and metadata) to the checked-in expected output
-  - This validates that real-world-like datasets remain stable across code changes.
-
-- **Cross-platform GUI and CLI checks**
-  - GitHub Actions workflows run these checks on **Windows**, **Linux**, and **macOS**, ensuring that:
-    - The CLI entry points import and run without errors
-    - The GUI can be imported and initialized on all three platforms
-  - Manual GUI testing has been performed on macOS; on Windows/Linux, the **CLI is the primary, fully tested interface**, while the GUI is expected to work and is further validated by CI.
-
-**Summary of current status**
-
-- Automated unit tests pass on supported Python versions (3.9+).
-- All documented examples run end-to-end and reproduce the committed BIDS outputs.
-- Cross-platform CI confirms that the CLI and GUI initialization work on macOS, Windows, and Linux for typical configurations.
-
----
-
-## Challenges and Lessons Learned
-
-During development, several non-trivial design and engineering challenges arose; addressing them shaped the current architecture.
-
-- **Robust ID and filename normalization**
-  - Real datasets include IDs such as `001`, `patient-001`, `Smith2023A`, and long lesion-tracing filenames.
-  - We resolved this by centralizing normalization logic in the engine, writing tests for corner cases (e.g., author/year/case combinations), and ensuring consistent handling across validator, planner, and writer.
-
-- **Session semantics for raw vs. derivatives**
-  - BIDS requires sessions for raw data but treats them as optional for derivatives.
-  - Early versions conflated these behaviors; tests now explicitly cover:
-    - Automatically adding `ses-01` for raw datasets when `session_id` is missing
-    - Avoiding session folders for derivatives when no `session_id` is provided
-  - This is reflected in the planner tests and has significantly reduced user confusion.
-
-- **Cross-platform GUI behavior**
-  - GUI behavior differed across macOS, Windows, and Linux (Tkinter versions, drag-and-drop support, file dialog quirks).
-  - We mitigated this by:
-    - Keeping path handling and OS-sensitive logic minimal and centralized
-    - Using Tkinter and `tkinterdnd2` in a conservative, cross-platform style
-    - Adding automated cross-platform import/initialization tests and documenting known platform-specific considerations.
-
-- **Reproducible testing without real PHI**
-  - Because clinical neuroimaging data is sensitive, all tests and examples use **synthetic or de-identified toy data**.
-  - File and metadata generators are designed to mimic real clinical workflows (raw scans, lesion maps, phenotype tables) while remaining fully shareable and reproducible.
-
-These lessons directly informed the separation of concerns between validation, planning, and writing, and motivated the focus on example-driven documentation.
-
----
-
 ## Future Work
 
 Several extensions are planned or under consideration to make BIDS Lite Organizer more powerful and easier to integrate into research pipelines:
@@ -909,17 +833,7 @@ This repository was originally developed as part of **CS5001 (Intensive Foundati
 
 While it has an academic origin, the goal from the outset has been to create a **practical, research-grade tool** that can be used and extended by the broader neuroimaging and brain-circuit research communities. The project continues to evolve beyond the initial course, with attention to reproducibility, cross-platform support, and alignment with emerging BIDS practices.
 
----
 
-## Code Repository
-
-[GitHub Repository](https://github.com/Jessy-Ding/BIDS-Lite-Organizer)
-
-## Testing Demo Videos
-
-- [Testing Demo Recording](https://drive.google.com/file/d/1ZsIGa5PVcbSG2MzlgkI2EL5cr7LsVtJL/view?usp=drive_link)
-
----
 
 ## License
 
